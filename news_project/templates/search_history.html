@@ -1,0 +1,22 @@
+
+<h1>Search History</h1>
+{% if search_history %}
+    <ul>
+    {% for item in search_history %}
+        <li>
+            <h3>Search: {{ item.keyword }}</h3>
+            <ul>
+            {% for result in item.searchresult_set.all %}
+                <li>
+                    <h4>{{ result.title }}</h4>
+                    <p>{{ result.description }}</p>
+                    <a href="{{ result.url }}" target="_blank">Read more</a>
+                </li>
+            {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No search history available.</p>
+{% endif %}
